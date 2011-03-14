@@ -455,10 +455,6 @@ void ClientSideGame::PredictMovement(int prevFrame, int curFrame)
 
 	localClient->frame[curFrame].key = inputClient.frame[curFrame].key;
 
-	//
-	// Player ->
-	//
-
 	// Process commands
 	CalculateVelocity(&localClient->frame[curFrame], frametime);
 
