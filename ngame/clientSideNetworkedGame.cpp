@@ -1,4 +1,5 @@
 #include "clientSideNetworkedGame.h"
+#include "../shape/clientSideShape.h"
 
 ClientSideNetworkedGame::ClientSideNetworkedGame()
 {
@@ -307,6 +308,7 @@ void ClientSideNetworkedGame::RunNetwork(int msec)
 	// Framerate is too high
 	if(time < (1000 / 60)) {
         MovePlayer();
+		moveRemotePlayers();
 		//do we need to move remote players here?? also..
 
 		return;
@@ -371,5 +373,23 @@ void ClientSideNetworkedGame::gameLoop()
 
 void ClientSideNetworkedGame::moveRemotePlayers()
 {
-	
+	if(!localClient)
+		return;
+
+	clientData *client = clientList;
+
+	Ogre::Vector3 transVector = Ogre::Vector3::ZERO;
+
+	for( ; client != NULL; client = client->next)
+	{
+
+		static Ogre::Real mMove = 17.0;
+		Ogre::Vector3 transVector = Ogre::Vector3::ZERO;
+
+
+		transVector.y = client->command.moveVector.y * mMove;
+		transVector.x = client->command.moveVector.x * mMove;
+
+		localClient->mClientSideShape->getSceneNode()->translate(transVector * rendertime, Ogre::Node::TS_LOCAL);
+	}
 }
