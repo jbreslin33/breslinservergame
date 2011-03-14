@@ -18,6 +18,7 @@ Client();
 	ServerSideCommand serverFrame;
 	ServerSideCommand command;
 
+	Vector3D moveVector;
 	long processedFrame;
 
 	Vector3D startPos;

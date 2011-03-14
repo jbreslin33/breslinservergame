@@ -184,6 +184,8 @@ void ClientSideNetworkedGame::BuildDeltaMoveCommand(dreamMessage *mes, clientDat
 	if(flags & CMD_KEY)
 	{
 		mes->WriteByte(theClient->command.key);
+		mes->WriteFloat(theClient->moveVector.x);
+		mes->WriteFloat(theClient->moveVector.y);
 	}
 
 	mes->WriteByte(theClient->command.msec);
@@ -305,6 +307,8 @@ void ClientSideNetworkedGame::RunNetwork(int msec)
 	// Framerate is too high
 	if(time < (1000 / 60)) {
         MovePlayer();
+		//do we need to move remote players here?? also..
+
 		return;
 	}
 

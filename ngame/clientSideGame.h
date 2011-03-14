@@ -63,6 +63,7 @@ typedef struct clientData
 	command_t	frame[64];	// frame history
 	command_t	serverFrame;					// the latest frame from server
 	command_t	command;						// current frame's commands
+	VECTOR2D    moveVector;
 
 	int			index;
 

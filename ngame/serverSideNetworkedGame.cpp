@@ -163,6 +163,8 @@ void ServerSideNetworkedGame::ReadDeltaMoveCommand(dreamMessage *mes, ServerSide
 	if(flags & CMD_KEY)
 	{
 		client->command.key = mes->ReadByte();
+		client->moveVector.x = mes->ReadFloat();
+		client->moveVector.y = mes->ReadFloat();
 
 		LogString("Client %d: read CMD_KEY (%d)", client->netClient->GetIndex(), client->command.key);
 	}
