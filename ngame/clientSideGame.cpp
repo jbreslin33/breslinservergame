@@ -342,6 +342,8 @@ void ClientSideGame::CalculateVelocity(command_t *command, float frametime)
 bool ClientSideGame::CheckKeys(void)
 {
 	inputClient.command.key = 0;
+	inputClient.moveVector.x = 0;
+	inputClient.moveVector.y = 0;
 
 	if(keys[VK_ESCAPE])
 	{
@@ -354,21 +356,25 @@ bool ClientSideGame::CheckKeys(void)
 	if(keys[VK_DOWN])
 	{
 		inputClient.command.key |= KEY_DOWN;
+		inputClient.command.moveVector.y = -1;
 	}
 
 	if(keys[VK_UP])
 	{
 		inputClient.command.key |= KEY_UP;
+		inputClient.command.moveVector.y = 1;
 	}
 
 	if(keys[VK_LEFT])
 	{
 		inputClient.command.key |= KEY_LEFT;
+		inputClient.command.moveVector.x = 1;
 	}
 
 	if(keys[VK_RIGHT])
 	{
 		inputClient.command.key |= KEY_RIGHT;
+		inputClient.command.moveVector.x = 1;
 	}
 
 	inputClient.command.msec = (int) (frametime * 1000);

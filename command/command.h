@@ -12,6 +12,8 @@ Command();
 	int key;
 	int msec;
 
+	Vector3D moveVector;
+
 	Vector3D origin;
 	Vector3D vel;	
 

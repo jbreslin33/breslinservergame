@@ -50,6 +50,7 @@ typedef struct
 typedef struct
 {
 	int			key;
+	VECTOR2D    moveVector;
 
 	VECTOR2D	vel;
 	VECTOR2D	origin;
