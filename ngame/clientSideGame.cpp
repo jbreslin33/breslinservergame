@@ -229,12 +229,14 @@ void ClientSideGame::RemoveClient(int ind)
 
 void ClientSideGame::MovePlayer(void)
 {
+
 	static Ogre::Real mMove = 17.0;
 	Ogre::Vector3 transVector = Ogre::Vector3::ZERO;
-
+/*
 	if(keys[VK_DOWN])
 	{
 		transVector.y -= mMove;
+		//inputClient.command.moveVector.y = -1;
 	}
 
 	if(keys[VK_UP])
@@ -252,6 +254,9 @@ void ClientSideGame::MovePlayer(void)
 		transVector.x += mMove;
 	}
 
+*/
+    transVector.y = inputClient.command.moveVector.y * mMove;
+	transVector.x = inputClient.command.moveVector.x * mMove;
 	if(localClient)
 	{
 		localClient->mClientSideShape->getSceneNode()->translate(transVector * rendertime, Ogre::Node::TS_LOCAL);
@@ -342,8 +347,8 @@ void ClientSideGame::CalculateVelocity(command_t *command, float frametime)
 bool ClientSideGame::CheckKeys(void)
 {
 	inputClient.command.key = 0;
-	inputClient.moveVector.x = 0;
-	inputClient.moveVector.y = 0;
+	inputClient.command.moveVector.x = 0;
+	inputClient.command.moveVector.y = 0;
 
 	if(keys[VK_ESCAPE])
 	{
@@ -368,7 +373,7 @@ bool ClientSideGame::CheckKeys(void)
 	if(keys[VK_LEFT])
 	{
 		inputClient.command.key |= KEY_LEFT;
-		inputClient.command.moveVector.x = 1;
+		inputClient.command.moveVector.x = -1;
 	}
 
 	if(keys[VK_RIGHT])

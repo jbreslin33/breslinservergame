@@ -184,8 +184,8 @@ void ClientSideNetworkedGame::BuildDeltaMoveCommand(dreamMessage *mes, clientDat
 	if(flags & CMD_KEY)
 	{
 		mes->WriteByte(theClient->command.key);
-		mes->WriteFloat(theClient->moveVector.x);
-		mes->WriteFloat(theClient->moveVector.y);
+		mes->WriteFloat(theClient->command.moveVector.x);
+		mes->WriteFloat(theClient->command.moveVector.y);
 	}
 
 	mes->WriteByte(theClient->command.msec);
