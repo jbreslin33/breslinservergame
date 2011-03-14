@@ -30,6 +30,9 @@ ClientSideNetworkedGame();
 	void Connect(void);
 	void Disconnect(void);
 	void Shutdown(void);
+
+	void moveRemotePlayers();
+
 	dreamClient *networkClient;
 };
 #endif

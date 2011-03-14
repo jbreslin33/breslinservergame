@@ -179,6 +179,10 @@ void ServerSideNetworkedGame::BuildMoveCommand(dreamMessage *mes, ServerSideNetw
 	// Key
 	mes->WriteByte(client->command.key);
 
+	//moveVector
+	mes->WriteFloat(client->command.moveVector.x);
+	mes->WriteFloat(client->command.moveVector.y);
+
 	// Origin
 	mes->WriteFloat(client->command.origin.x);
 	mes->WriteFloat(client->command.origin.y);
@@ -214,6 +218,8 @@ void ServerSideNetworkedGame::BuildDeltaMoveCommand(dreamMessage *mes, ServerSid
 	if(flags & CMD_KEY)
 	{
 		mes->WriteByte(client->command.key);
+		mes->WriteByte(client->command.moveVector.x);
+		mes->WriteByte(client->command.moveVector.y);
 	}
 
 	if(flags & CMD_ORIGIN)

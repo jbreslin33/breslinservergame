@@ -368,3 +368,8 @@ void ClientSideNetworkedGame::gameLoop()
 	Ogre::WindowEventUtilities::messagePump();
 	keepRunning = mRoot->renderOneFrame();
 }
+
+void ClientSideNetworkedGame::moveRemotePlayers()
+{
+	
+}
