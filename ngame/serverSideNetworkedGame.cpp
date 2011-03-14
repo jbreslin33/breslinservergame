@@ -337,6 +337,7 @@ void ServerSideNetworkedGame::MovePlayer(ServerSideNetworkedClient *client)
 	client->command.origin.x += client->command.vel.x;
 	client->command.origin.y += client->command.vel.y;
 
+
 	int f = client->netClient->GetIncomingSequence() & (COMMAND_HISTORY_SIZE-1);
 	client->processedFrame = f;
 }

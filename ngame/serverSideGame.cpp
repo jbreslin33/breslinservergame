@@ -32,10 +32,12 @@ void ServerSideGame::CalculateVelocity(ServerSideCommand *command, float frameti
 
         command->vel.x = 0.0f;
         command->vel.y = 0.0f;
-
+		
+		command->vel.x = command->moveVector.x;
+		command->vel.y = command->moveVector.y;
+/*
         if(command->key & KEY_UP)
         {
-
                 command->vel.y += multiplier * frametime;
         }
 
@@ -53,6 +55,7 @@ void ServerSideGame::CalculateVelocity(ServerSideCommand *command, float frameti
         {
                 command->vel.x += multiplier * frametime;
         }
+*/
 }
 
 void ServerSideGame::RemoveClients(void)
