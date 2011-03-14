@@ -273,7 +273,7 @@ void ClientSideGame::MoveObjects(void)
 {
 	if(!localClient)
 		return;
-
+/*
 	clientData *client = clientList;
 
 	Ogre::Vector3 transVector = Ogre::Vector3::ZERO;
@@ -307,7 +307,7 @@ void ClientSideGame::MoveObjects(void)
 		}
 
 	}
-
+*/
 	}
 
 
