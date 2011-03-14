@@ -390,6 +390,6 @@ void ClientSideNetworkedGame::moveRemotePlayers()
 		transVector.y = client->command.moveVector.y * mMove;
 		transVector.x = client->command.moveVector.x * mMove;
 
-		localClient->mClientSideShape->getSceneNode()->translate(transVector * rendertime, Ogre::Node::TS_LOCAL);
+		client->mClientSideShape->getSceneNode()->translate(transVector * rendertime, Ogre::Node::TS_LOCAL);
 	}
 }
