@@ -375,21 +375,20 @@ void ClientSideNetworkedGame::moveRemotePlayers()
 {
 	if(!localClient)
 		return;
-
+	
 	clientData *client = clientList;
-
-	Ogre::Vector3 transVector = Ogre::Vector3::ZERO;
 
 	for( ; client != NULL; client = client->next)
 	{
+		if (client != localClient)
+		{
+			Ogre::Vector3 transVector = Ogre::Vector3::ZERO;
+			static Ogre::Real mMove = 17.0;
 
-		static Ogre::Real mMove = 17.0;
-		Ogre::Vector3 transVector = Ogre::Vector3::ZERO;
+			transVector.y = client->command.moveVector.y * mMove;
+			transVector.x = client->command.moveVector.x * mMove;
 
-
-		transVector.y = client->command.moveVector.y * mMove;
-		transVector.x = client->command.moveVector.x * mMove;
-
-		client->mClientSideShape->getSceneNode()->translate(transVector * rendertime, Ogre::Node::TS_LOCAL);
+			client->mClientSideShape->getSceneNode()->translate(transVector * rendertime, Ogre::Node::TS_LOCAL);
+		}
 	}
 }
